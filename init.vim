@@ -1,5 +1,5 @@
 call plug#begin()
-Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'https://github.com/nvim-tree/nvim-web-devicons'
 Plug 'https://github.com/nvim-tree/nvim-tree.lua'
 Plug 'https://github.com/jiangmiao/auto-pairs'
@@ -25,6 +25,7 @@ Plug 'https://github.com/nvim-lualine/lualine.nvim'
 Plug 'https://github.com/phaazon/hop.nvim'
 Plug 'https://github.com/RishabhRD/popfix'
 Plug 'https://github.com/RishabhRD/nvim-cheat.sh'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 call plug#end()
 
@@ -52,6 +53,7 @@ set autoindent
 set shell=bash\ -i
 set encoding=UTF-8
 set wildmode=longest,list
+set spelllang=en_us
 set spell
 set mouse=
 
@@ -90,5 +92,8 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " nvim-cmp
 set completeopt=menu,menuone,noselect
+
+" markdown-preview
+let g:mkdp_auto_start = 1
 
 lua require('init')

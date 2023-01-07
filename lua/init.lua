@@ -75,7 +75,7 @@ vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
--- setup with some options
+-- setup nvim-tree with some options
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
   open_on_setup_file = true,
@@ -143,19 +143,19 @@ vim.keymap.set('', 'F', function()
 end, {remap=true})
 
 
--- setup nvim-treesitter
-local configs = require'nvim-treesitter.configs'
-configs.setup {
-  auto_install = true,
-  highlight = { -- enable highlighting
-    enable = true, 
-  },
-  indent = {
-    enable = true, -- default is disabled anyways
-  }
-}
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- -- setup nvim-treesitter
+-- local configs = require'nvim-treesitter.configs'
+-- configs.setup {
+  -- auto_install = true,
+  -- highlight = { -- enable highlighting
+    -- enable = true,
+  -- },
+  -- indent = {
+    -- enable = true, -- default is disabled anyways
+  -- }
+-- }
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- setup mason
 require("mason").setup({
