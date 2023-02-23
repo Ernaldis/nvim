@@ -186,10 +186,6 @@ require("lspconfig").sumneko_lua.setup({
     },
   },
 })
-require("lspconfig").pyright.setup({})
-require("lspconfig").bashls.setup({})
-require("lspconfig").yamlls.setup({})
-
 
 -- lsp key bindings
 -- Mappings.
@@ -225,3 +221,38 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
+
+local lsp_flags = {
+  -- This is the default in Nvim 0.7+
+  debounce_text_changes = 150,
+}
+require("lspconfig").pyright.setup({
+  on_attach = on_attach,
+  flags = lsp_flags,
+})
+require("lspconfig").bashls.setup({
+  on_attach = on_attach,
+  flags = lsp_flags,
+})
+require("lspconfig").yamlls.setup({
+  on_attach = on_attach,
+  flags = lsp_flags,
+})
+require('lspconfig').jsonnet_ls.setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+	formatting = {
+		Indent              = 2,
+		MaxBlankLines       = 2,
+		StringStyle         = 'single',
+		CommentStyle        = 'slash',
+		PrettyFieldNames    = true,
+		PadArrays           = false,
+		PadObjects          = true,
+		SortImports         = true,
+		UseImplicitPlus     = true,
+		StripEverything     = false,
+		StripComments       = false,
+		StripAllButComments = false,
+	},
+}

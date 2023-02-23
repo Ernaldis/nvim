@@ -25,7 +25,8 @@ Plug 'https://github.com/nvim-lualine/lualine.nvim'
 Plug 'https://github.com/phaazon/hop.nvim'
 Plug 'https://github.com/RishabhRD/popfix'
 Plug 'https://github.com/RishabhRD/nvim-cheat.sh'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'https://github.com/iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'https://github.com/google/vim-jsonnet'
 
 call plug#end()
 
@@ -53,11 +54,9 @@ set autoindent
 set shell=bash\ -i
 set encoding=UTF-8
 set wildmode=longest,list
-set spelllang=en_us
-set spell
+" set spelllang=en_us
+" set spell
 set mouse=
-
-autocmd VimEnter * normal zR
 
 augroup common
   autocmd!
@@ -95,5 +94,11 @@ set completeopt=menu,menuone,noselect
 
 " markdown-preview
 let g:mkdp_auto_start = 1
+
+" auto hashbangs
+augroup Shebang
+  autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python\<nl>\"|$
+  autocmd BufNewFile *.sh 0put =\"#!/usr/bin/bash bash\<nl>\"|$
+augroup end
 
 lua require('init')
