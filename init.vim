@@ -1,11 +1,9 @@
 call plug#begin()
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'https://github.com/nvim-tree/nvim-web-devicons'
 Plug 'https://github.com/nvim-tree/nvim-tree.lua'
 Plug 'https://github.com/jiangmiao/auto-pairs'
 Plug 'https://github.com/frazrepo/vim-rainbow'
 Plug 'https://github.com/tpope/vim-surround'
-Plug 'https://github.com/psf/black'
 Plug 'https://github.com/Yggdroot/indentLine'
 Plug 'https://github.com/preservim/nerdcommenter'
 Plug 'https://github.com/lukas-reineke/indent-blankline.nvim'
@@ -27,6 +25,11 @@ Plug 'https://github.com/RishabhRD/popfix'
 Plug 'https://github.com/RishabhRD/nvim-cheat.sh'
 Plug 'https://github.com/iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'https://github.com/google/vim-jsonnet'
+Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'jvgrootveld/telescope-zoxide'
+Plug 'nanotee/zoxide.vim'
+Plug 'Canop/nvim-bacon'
 
 call plug#end()
 
