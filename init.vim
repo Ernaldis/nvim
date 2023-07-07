@@ -8,7 +8,7 @@ Plug 'https://github.com/Yggdroot/indentLine'
 Plug 'https://github.com/preservim/nerdcommenter'
 Plug 'https://github.com/lukas-reineke/indent-blankline.nvim'
 Plug 'https://github.com/tmhedberg/matchit'
-Plug 'https://github.com/sheerun/vim-polyglot'
+" Plug 'https://github.com/sheerun/vim-polyglot'
 Plug 'https://github.com/williamboman/mason.nvim'
 Plug 'https://github.com/williamboman/mason-lspconfig.nvim'
 Plug 'https://github.com/neovim/nvim-lspconfig'
@@ -25,7 +25,7 @@ Plug 'https://github.com/RishabhRD/popfix'
 Plug 'https://github.com/RishabhRD/nvim-cheat.sh'
 Plug 'https://github.com/iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'https://github.com/google/vim-jsonnet'
-Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
+" Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'jvgrootveld/telescope-zoxide'
 Plug 'nanotee/zoxide.vim'
