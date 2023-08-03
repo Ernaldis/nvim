@@ -43,19 +43,21 @@ end
 
 -- Snippet bindings
 -- Jump forward or backward
-vim.api.nvim_set_keymap('i', '<Tab>', 'vsnip#jumpable(1)  ? \'<Plug>(vsnip-jump-next)\'      : \'<Tab>\'', { expr = true })
-vim.api.nvim_set_keymap('s', '<Tab>', 'vsnip#jumpable(1)  ? \'<Plug>(vsnip-jump-next)\'      : \'<Tab>\'', { expr = true })
+vim.api.nvim_set_keymap('i', '<Tab>', 'vsnip#jumpable(1)  ? \'<Plug>(vsnip-jump-next)\'      : \'<Tab>\'',
+  { expr = true })
+vim.api.nvim_set_keymap('s', '<Tab>', 'vsnip#jumpable(1)  ? \'<Plug>(vsnip-jump-next)\'      : \'<Tab>\'',
+  { expr = true })
 vim.api.nvim_set_keymap('i', '<S-Tab>', 'vsnip#jumpable(-1)  ? \'<Plug>(vsnip-jump-prev)\'      : \'<S-Tab>\'',
   { expr = true })
 vim.api.nvim_set_keymap('s', '<S-Tab>', 'vsnip#jumpable(-1)  ? \'<Plug>(vsnip-jump-prev)\'      : \'<S-Tab>\'',
   { expr = true })
 -- Expand Snippet
-vim.api.nvim_set_keymap('i', '<C-j>', 'vsnip#expandable()  ? \'<Plug>(vsnip-expand)\'         : \'<C-j>\'', {expr = true})
-vim.api.nvim_set_keymap('s', '<C-j>', 'vsnip#expandable()  ? \'<Plug>(vsnip-expand)\'         : \'<C-j>\'', {expr = true})
+vim.api.nvim_set_keymap('i', '<C-j>', 'vsnip#expandable()  ? \'<Plug>(vsnip-expand)\'         : \'<C-j>\'', { expr = true })
+vim.api.nvim_set_keymap('s', '<C-j>', 'vsnip#expandable()  ? \'<Plug>(vsnip-expand)\'         : \'<C-j>\'', { expr = true })
 
 -- Expand or Jump
-vim.api.nvim_set_keymap('i', '<C-l>', 'vsnip#available(1)  ? \'<Plug>(vsnip-expand-or-jump)\' : \'<C-l>\'', {expr = true})
-vim.api.nvim_set_keymap('s', '<C-l>', 'vsnip#available(1)  ? \'<Plug>(vsnip-expand-or-jump)\' : \'<C-l>\'', {expr = true})
+vim.api.nvim_set_keymap('i', '<C-l>', 'vsnip#available(1)  ? \'<Plug>(vsnip-expand-or-jump)\' : \'<C-l>\'', { expr = true })
+vim.api.nvim_set_keymap('s', '<C-l>', 'vsnip#available(1)  ? \'<Plug>(vsnip-expand-or-jump)\' : \'<C-l>\'', { expr = true })
 
 -- Select or Cut Text
 vim.api.nvim_set_keymap('n', 's', '<Plug>(vsnip-select-text)', {})
@@ -69,15 +71,24 @@ vim.keymap.set("n", "<leader>cd", T.extensions.zoxide.list)
 
 
 -- Hop bindings
-vim.keymap.set('', 'f', function()
-  Hop.hint_char1({ direction = Directions.AFTER_CURSOR, current_line_only = true })
-end, {remap=true})
-vim.keymap.set('', 'F', function()
-  Hop.hint_char1({ direction = Directions.BEFORE_CURSOR, current_line_only = true })
-end, {remap=true})
-vim.keymap.set('', 't', function()
-  Hop.hint_char1({ direction = Directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
-end, {remap=true})
-vim.keymap.set('', 'T', function()
-  Hop.hint_char1({ direction = Directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
-end, {remap=true})
+local function setHopMapping(key, direction, offset, mode)
+  vim.keymap.set('', key, function()
+    local hopOpts = { direction = direction, current_line_only = true, hint_offset = offset or 0 }
+    if mode == 'word' then
+      Hop.hint_words(hopOpts)
+    elseif mode == 'pattern' then
+      Hop.hint_patterns(hopOpts)
+    else
+      Hop.hint_char1(hopOpts)
+    end
+  end, { remap = true })
+end
+
+setHopMapping('<leader>f', Directions.AFTER_CURSOR)
+setHopMapping('<leader>F', Directions.BEFORE_CURSOR)
+setHopMapping('<leader>t', Directions.AFTER_CURSOR, -1)
+setHopMapping('<leader>T', Directions.BEFORE_CURSOR, 1)
+
+local hopOps = {silent = true}
+vim.api.nvim_set_keymap('n', '<leader>w', [[<cmd>lua require'hop'.hint_words()<cr>]], hopOps)
+vim.api.nvim_set_keymap('n', '<leader>p', [[<cmd>lua require'hop'.hint_patterns()<cr>]], hopOps)
