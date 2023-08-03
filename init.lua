@@ -22,7 +22,7 @@ vim.o.autoindent = true
 vim.o.shell = "bash"
 vim.o.encoding = "UTF-8"
 vim.o.wildmode = "longest,list"
-vim.o.spelllang = "en_us"
+vim.o.spelllang = "en_us,de"
 vim.o.spell = true
 vim.o.mouse = ""
 
