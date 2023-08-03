@@ -1,13 +1,12 @@
 {
-  },
   "test": {
     "prefix": "test",
     "body": "func Test${1:FunctionName}(t *testing.T) {\n\t$0\n}",
     "description": "Go testing pattern"
   },
   "errcheck": {
-    "prefix": "errcheck",
-    "body": "if err != nil {\n\tlog.Fatal(err)\n}",
+    "prefix": "err",
+    "body": "if err != nil {\n\tlog.Fatalf(\"Error${1:}: %v\", err)\n}",
     "description": "Go error handling pattern"
   }
 }
