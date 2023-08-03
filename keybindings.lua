@@ -40,6 +40,7 @@ on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
+
 -- Snippet bindings
 -- Jump forward or backward
 vim.api.nvim_set_keymap('i', '<Tab>', 'vsnip#jumpable(1)  ? \'<Plug>(vsnip-jump-next)\'      : \'<Tab>\'', { expr = true })
@@ -62,3 +63,21 @@ vim.api.nvim_set_keymap('x', 's', '<Plug>(vsnip-select-text)', {})
 vim.api.nvim_set_keymap('n', 'S', '<Plug>(vsnip-cut-text)', {})
 vim.api.nvim_set_keymap('x', 'S', '<Plug)(vsnip-cut-text)', {})
 
+
+-- Telescope
+vim.keymap.set("n", "<leader>cd", T.extensions.zoxide.list)
+
+
+-- Hop bindings
+vim.keymap.set('', 'f', function()
+  Hop.hint_char1({ direction = Directions.AFTER_CURSOR, current_line_only = true })
+end, {remap=true})
+vim.keymap.set('', 'F', function()
+  Hop.hint_char1({ direction = Directions.BEFORE_CURSOR, current_line_only = true })
+end, {remap=true})
+vim.keymap.set('', 't', function()
+  Hop.hint_char1({ direction = Directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+end, {remap=true})
+vim.keymap.set('', 'T', function()
+  Hop.hint_char1({ direction = Directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
+end, {remap=true})

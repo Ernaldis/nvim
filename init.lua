@@ -1,12 +1,6 @@
 local config_path = vim.fn.stdpath('config')
 package.path = config_path .. '/?.lua;' .. package.path
 
-require('plugins')
-require('autocommands')
-require('keybindings')
-require('lsp')
-require('completion')
-
 vim.o.number = true
 vim.o.swapfile = false
 vim.o.wildmenu = true
@@ -45,11 +39,11 @@ require("nvim-tree").setup()
 
 
 -- telescope/zoxide
-local t = require("telescope")
+T = require("telescope")
 local z_utils = require("telescope._extensions.zoxide.utils")
 
 -- Configure the extension
-t.setup({
+T.setup({
   extensions = {
     zoxide = {
       prompt_title = "[ Walking on the shoulders of TJ ]",
@@ -72,11 +66,7 @@ t.setup({
 })
 
 -- Load the extension
-t.load_extension('zoxide')
-
--- Add a mapping
-vim.keymap.set("n", "<leader>cd", t.extensions.zoxide.list)
-
+T.load_extension('zoxide')
 
 -- setup lualine
 require('lualine').setup {
@@ -89,3 +79,13 @@ require('nvim-autopairs').setup({
 })
 
 vim.g.vsnip_snippet_dir = os.getenv('HOME') .. '/.config/nvim/snippets'
+
+Hop = require('hop')
+Directions = require('hop.hint').HintDirection
+
+
+require('keybindings')
+require('plugins')
+require('autocommands')
+require('lsp')
+require('completion')

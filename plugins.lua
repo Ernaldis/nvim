@@ -1,5 +1,13 @@
 return require('packer').startup(function()
-  use "rafamadriz/friendly-snippets"
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v2', -- optional but strongly recommended
+    config = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    end
+  }
+  use 'rafamadriz/friendly-snippets'
   use 'wbthomason/packer.nvim'
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
