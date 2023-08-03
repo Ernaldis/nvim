@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/home/timothychandler/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
     url = "https://github.com/hrsh7th/cmp-vsnip"
   },
+  ["friendly-snippets"] = {
+    loaded = true,
+    path = "/home/timothychandler/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets"
+  },
   fzf = {
     loaded = true,
     path = "/home/timothychandler/.local/share/nvim/site/pack/packer/start/fzf",

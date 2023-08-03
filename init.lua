@@ -25,15 +25,14 @@ vim.o.tabstop = 2
 vim.o.list = true
 vim.o.listchars = "tab:-\\|"
 vim.o.autoindent = true
-vim.o.shell = "bash -i"
+vim.o.shell = "bash"
 vim.o.encoding = "UTF-8"
 vim.o.wildmode = "longest,list"
 vim.o.spelllang = "en_us"
--- vim.o.spell = true
+vim.o.spell = true
 vim.o.mouse = ""
 
 
--- Set up nvim-tree
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -88,3 +87,5 @@ require('lualine').setup {
 require('nvim-autopairs').setup({
   enable_check_bracket_line = true
 })
+
+vim.g.vsnip_snippet_dir = os.getenv('HOME') .. '/.config/nvim/snippets'

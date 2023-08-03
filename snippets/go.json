@@ -1,0 +1,12 @@
+{
+  "error handling": {
+    "prefix": "err",
+    "body": [
+      "${1:variable}, err := ${2:function}(${3:parameters})",
+      "if err != nil {",
+      "    log.Fatalf(\"Error: %v\", err)",
+      "}"
+    ],
+    "description": "Go error handling pattern"
+  }
+}

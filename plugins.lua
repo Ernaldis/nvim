@@ -1,4 +1,5 @@
 return require('packer').startup(function()
+  use "rafamadriz/friendly-snippets"
   use 'wbthomason/packer.nvim'
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
