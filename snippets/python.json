@@ -1,0 +1,10 @@
+{
+  "class": {
+    "prefix": "class",
+    "body": "class ${1:ClassName}:\n\tdef __init__(self, ${2:args}):\n\t\t$0\n}"
+  },
+  "def": {
+    "prefix": "def",
+    "body": "def ${1:function_name}(${2:args}):\n\t$0"
+  }
+}

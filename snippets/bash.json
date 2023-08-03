@@ -1,0 +1,10 @@
+{
+  "shebang": {
+    "prefix": "#!",
+    "body": "#!/bin/bash\n$0"
+  },
+  "for": {
+    "prefix": "for",
+    "body": "for ((i=${1:start}; i<=${2:end}; i++)); do\n\t$0\ndone"
+  }
+}

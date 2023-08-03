@@ -1,0 +1,10 @@
+{
+  "impl": {
+    "prefix": "impl",
+    "body": "impl ${1:Trait} for ${2:Type} {\n\t$0\n}"
+  },
+  "main": {
+    "prefix": "main",
+    "body": "fn main() {\n\t$0\n}"
+  }
+}

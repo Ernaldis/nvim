@@ -1,12 +1,13 @@
 {
-  "error handling": {
-    "prefix": "err",
-    "body": [
-      "${1:variable}, err := ${2:function}(${3:parameters})",
-      "if err != nil {",
-      "    log.Fatalf(\"Error: %v\", err)",
-      "}"
-    ],
+  },
+  "test": {
+    "prefix": "test",
+    "body": "func Test${1:FunctionName}(t *testing.T) {\n\t$0\n}",
+    "description": "Go testing pattern"
+  },
+  "errcheck": {
+    "prefix": "errcheck",
+    "body": "if err != nil {\n\tlog.Fatal(err)\n}",
     "description": "Go error handling pattern"
   }
 }
