@@ -134,3 +134,14 @@ require('lspconfig').jsonnet_ls.setup {
     StripAllButComments = false,
   },
 }
+require("lspconfig").jsonls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = lsp_flags,
+  settings = {
+    json = {
+      format = { indent = 2 },
+    },
+  },
+})
+
