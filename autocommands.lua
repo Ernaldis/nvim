@@ -1,5 +1,5 @@
 vim.cmd([[
-  autocmd BufWritePre * lua vim.lsp.buf.format({ async = true })
+  autocmd BufWritePre * lua vim.lsp.buf.format()
   autocmd BufWritePost *.rs silent !command cargo clippy --fix --allow-dirty -- -W clippy::pedantic -W clippy::expect_used -W clippy::unwrap_used -W clippy::nursery
 ]])
 
