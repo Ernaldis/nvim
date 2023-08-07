@@ -6,7 +6,7 @@
   },
   "errcheck": {
     "prefix": "err",
-    "body": "if err != nil {\n\tlog.Fatalf(\"Error${1:}: %v\", err)\n}",
+    "body": "if err != nil {\n\tpanic(err)\n}",
     "description": "Go error handling pattern"
   }
 }
