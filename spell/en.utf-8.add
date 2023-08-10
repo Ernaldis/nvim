@@ -117,3 +117,8 @@ prometheus
 apiGroups
 rbac
 https
+json
+url
+readme
+gitlab
+api
