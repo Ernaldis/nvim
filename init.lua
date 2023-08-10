@@ -37,6 +37,8 @@ vim.opt.termguicolors = true
 -- empty setup using defaults
 require("nvim-tree").setup()
 
+-- setup rainbow
+vim.g.rainbow_active = 1
 
 -- telescope/zoxide
 T = require("telescope")
