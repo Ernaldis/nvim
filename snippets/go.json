@@ -11,12 +11,17 @@
   },
   "testtable": {
     "prefix": "testtable",
-    "body": "func Test${1:FunctionName}(t *testing.T) {\n\ttests := []struct {\n\t\tname      string\n\t\tinput     ${2:InputType}\n\t\texpected  ${3:ExpectedType}\n\t}{\n\t\t${4:// test cases here}\n\t}\n\n\tfor _, testCase := range tests {\n\t\tt.Run(testCase.name, func(t *testing.T) {\n\t\t\tresult := ${5:FunctionToTest}(testCase.input)\n\t\t\t// Add comparison logic here\n\t\t\tif result != testCase.expected {\n\t\t\t\tt.Errorf(\"Expected %v but got %v\", testCase.expected, result)\n\t\t\t}\n\t\t})\n\t}\n}",
+    "body": "func Test${1:FunctionName}(t *testing.T) {\n\ttests := []struct {\n\t\tname     string\n\t\tinput    ${2:InputType}\n\t\texpected ${3:ExpectedType}\n\t}{\n\t\t${4:// test cases here}\n\t}\n\n\tfor _, testCase := range tests {\n\t\tt.Run(testCase.name, func(t *testing.T) {\n\t\t\tresult := ${5:FunctionToTest}(testCase.input)\n\t\t\tif !reflect.DeepEqual(result, testCase.expected) {\n\t\t\t\tt.Errorf(\"Expected %v but got %v\", testCase.expected, result)\n\t\t\t}\n\t\t})\n\t}\n}",
     "description": "Generic table-driven test in Go"
   },
   "canary": {
     "prefix": "testcanary",
     "body": "func TestCanary(t *testing.T) {\n\tif true != true {\n\t\tt.Errorf(\"Canary test failed\")\n\t}\n}",
     "description": "Canary test in Go"
+  },
+  "testpanic": {
+    "prefix": "testpanic",
+    "body": "func Test${1:FunctionThatPanics}(t *testing.T) {\n\tdefer func() {\n\t\tif result := recover(); result == nil {\n\t\t\tt.Errorf(\"${1:FunctionThatPanics} did not panic as expected\")\n\t\t} else {\n\t\t\texpected := \"${2:ExpectedPanicValue}\"\n\t\t\tif result != expected {\n\t\t\t\tt.Errorf(\"Unexpected panic value: got %v, want %v\", result, expected)\n\t\t\t}\n\t\t}\n\t}()\n\n\t${1:FunctionThatPanics}(${3:FunctionArguments})\n}",
+    "description": "Test for function that should panic in Go"
   }
 }

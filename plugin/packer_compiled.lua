@@ -215,6 +215,11 @@ _G.packer_plugins = {
     path = "/home/timothychandler/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["vim-helm"] = {
+    loaded = true,
+    path = "/home/timothychandler/.local/share/nvim/site/pack/packer/start/vim-helm",
+    url = "https://github.com/towolf/vim-helm"
+  },
   ["vim-jsonnet"] = {
     loaded = true,
     path = "/home/timothychandler/.local/share/nvim/site/pack/packer/start/vim-jsonnet",
